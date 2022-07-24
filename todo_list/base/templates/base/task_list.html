@@ -1,15 +1,19 @@
 {% if request.user.is_authenticated %}
 <p>{{request.user}}</p>
 <a href="{% url 'logout' %}">Log Out</a>
-
 {% else %}
 <a href="{% url 'login' %}">Login</a>
-
 {% endif %}
 
 <hr />
-<h1>My To Do List</h1>
+<h1>My To Do List {{temp2}}</h1>
 <a href="{% url 'task-create' %}">Add Task</a>
+
+<form method="GET">
+  <!-- {{ myFilter.form }} -->
+  <input type='text' name='search-area' placeholder="Search your task" value="{{temp3}}">
+  <input type="submit" value="Search">
+</form>
 
 <table>
   <tr>
@@ -17,10 +21,9 @@
     <th></th>
     <th></th>
   </tr>
-  {% for task in object_list %}
+  {% for task in temp5 %}
   <tr>
     <td>{{task.title}}</td>
-    <td><a href="{% url 'task' task.id %}">View</a></td>
     <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
     <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
   </tr>
