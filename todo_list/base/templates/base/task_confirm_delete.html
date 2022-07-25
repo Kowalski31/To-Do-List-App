@@ -1,12 +1,64 @@
-{% extends 'base/main.html' %}
+<style>
+  body {
+    background-color: lightseagreen;
+    font-family: "Nunito", sans-serif;
+    padding-top: 50px;
+  }
 
-{% block content %}
+  a,
+  p {
+    color: #4b5156;
+  }
 
+  a {
+    font-weight: 600;
+  }
+
+  .header-bar {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    background: linear-gradient(90deg, #906abd 0%, #906abd 43%, #906abd 100%);
+  }
+
+  .header-bar a {
+    color: rgb(247, 247, 247);
+    text-decoration: none;
+  }
+
+  .center-column {
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+  }
+
+  .button {
+    border: 1px solid #757575;
+    background-color: #fff;
+    color: #906abd;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+</style>
+
+<div class="center-column">
+  <div class="header-bar">
     <a href="{% url 'tasks' %}">Go Back</a>
+  </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <p>Are u sure want to delete this task ? "{{task}}"</p>
-        <input type="submit" value="Delete">
+  <div class="card-body">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <p>Are u sure want to delete "{{item}}" task ?</p>
+      <input class="button" type="submit" value="Confirm" />
     </form>
-{% endblock content %}
+  </div>
+</div>
